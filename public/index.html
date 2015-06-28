@@ -1,1 +1,84 @@
-<h1>Subredditor</h1>
+<!doctype html>
+<html lang="en" ng-app="subredditor">
+  <head>
+    <meta charset="utf-8">
+    <title>SubRedditor</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css" type='text/css'>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!--    add image -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">SubRedditor</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <!-- dummy paths -->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+        <div class='row'>
+            <div class='col-md-2'>
+               <img src="img/reddit-logo.png" class='searchimg'>
+            </div>
+            <div class='col-md-4'>
+              <form class="form-horizontal">
+                <input type="text" placeholder="Enter a Subreddit">
+                <input type="submit" class="btn"></input>
+              </form>
+            </div>
+        </div>
+
+        <div class='row'>
+          <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Article</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                  <tr>
+                    <td class='picture'>
+                        <img class="articleimg" src="img/reddit-logo.png">
+                    </td>
+                    <td class='article'>Testing Testing Testing Testing Testing Testing Testing Testing Testing</td>
+                    <td class='read-more'><a href='#'> Read More </a> </td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
