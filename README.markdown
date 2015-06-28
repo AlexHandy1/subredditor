@@ -4,9 +4,13 @@ User Stories
    So that I can stay on top of the latest trends
    I want to be able to search for the latest articles in my favourite subreddits
 
-2. As an admin
+2a. As an admin
    So that I can understand what people are searching for
    I want to be able to store user searches in a database
+
+2b. As a user,
+    So that I can see what people have searched for
+    I want to be able to see a list of the last 10 searches
 
 3. As a User,
    So that I understand why I don't get results,

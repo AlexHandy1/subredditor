@@ -10,9 +10,11 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="js/app.js"></script>
+     <script src="js/subRedditSearch.js"></script>
+    <script src="js/subRedditController.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
-  <body>
+  <body ng-controller='SubRedditController as SRCtrl'>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,8 +38,8 @@
                <img src="img/reddit-logo.png" class='searchimg'>
             </div>
             <div class='col-md-4'>
-              <form class="form-horizontal">
-                <input type="text" placeholder="Enter a Subreddit">
+              <form class="form-horizontal" ng-submit='SRCtrl.runSearch()'>
+                <input type="text" placeholder="Enter a Subreddit" ng-model='SRCtrl.searchTerm'>
                 <input type="submit" class="btn"></input>
               </form>
             </div>
@@ -49,18 +51,22 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th>Article</th>
+                  <th></th>
                   <th></th>
                 </tr>
               </thead>
 
               <tbody>
-                  <tr>
+                  <tr ng-repeat='subreddit in SRCtrl.subReddits'>
                     <td class='picture'>
-                        <img class="articleimg" src="img/reddit-logo.png">
+                        <img class="articleimg" ng-src="{{subreddit.image}}">
                     </td>
-                    <td class='article'>Testing Testing Testing Testing Testing Testing Testing Testing Testing</td>
-                    <td class='read-more'><a href='#'> Read More </a> </td>
+                    <td class='article'>
+                    <span> <b>{{subreddit.data.title}} </b></span>
+                    <br>
+                    <span> <i> {{subreddit.data.author}} </i></span>
+                    </td>
+                    <td class='read-more'><a ng-href='{{subreddit.data.url}}'> Read More </a> </td>
                   </tr>
               </tbody>
             </table>
@@ -69,16 +75,3 @@
     </div>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
