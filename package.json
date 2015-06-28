@@ -1,0 +1,28 @@
+{
+  "name": "subredditor",
+  "version": "1.0.0",
+  "description": "User Stories",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start test/karma.conf.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexHandy1/subredditor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexHandy1/subredditor/issues"
+  },
+  "homepage": "https://github.com/AlexHandy1/subredditor#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "^1.9.17"
+  }
+}

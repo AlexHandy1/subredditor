@@ -1,0 +1,26 @@
+{
+  "name": "subredditor",
+  "version": "0.0.0",
+  "homepage": "https://github.com/AlexHandy1/subredditor",
+  "authors": [
+    "Alex Handy <handy437@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.1",
+    "angular-resource": "~1.4.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.1",
+    "angular-route": "~1.4.1"
+  }
+}
