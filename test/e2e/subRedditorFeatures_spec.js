@@ -8,9 +8,16 @@ describe('SubRedditor', function() {
 
    it('has a table loaded prior to search', function(){
       expect($('table').isPresent()).toBeTruthy();
-   })
+   });
 
-   //test that after a search it is populated
+   it('has a fully populated table after a search is conducted', function() {
+      var searchButton = element(by.id('searchButton'))
+      var searchField = element(by.model('SRCtrl.searchTerm'))
+      var table = element.all(by.repeater('subreddit in SRCtrl.cohort'));
+      searchField.sendKeys('Bitcoin');
+      searchButton.click();
+      expect($$('table tr').count()).toBe(26)
+   });
 
    //test that has a link that goes to external website
 });
