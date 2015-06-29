@@ -1,4 +1,4 @@
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['subRedditorFeatures.js']
+  specs: ['subRedditorFeatures_spec.js']
 }
