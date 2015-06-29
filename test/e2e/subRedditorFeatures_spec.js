@@ -19,5 +19,14 @@ describe('SubRedditor', function() {
       expect($$('table tr').count()).toBe(26)
    });
 
+   it('displays an error message if there is no subreddit for that search', function() {
+      var searchButton = element(by.id('searchButton'))
+      var searchField = element(by.model('SRCtrl.searchTerm'))
+
+      searchField.sendKeys('aa');
+      searchButton.click();
+      expect(element(by.id('error')).getText()).toContain('Sorry, there are no subreddits matching that search');
+   })
+
    //test that has a link that goes to external website
 });

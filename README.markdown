@@ -29,3 +29,5 @@ User Stories
    I want to be able to sort by alphabetical order
 
 [![Build Status](https://travis-ci.org/AlexHandy1/subredditor.svg?branch=master)](https://travis-ci.org/AlexHandy1/subredditor)
+
+[Waffle Board](https://waffle.io/AlexHandy1/subredditor)
