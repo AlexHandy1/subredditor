@@ -1,12 +1,23 @@
-subredditor.controller('SubRedditController',['$http','Search',function($http,Search) {
+subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms', function($http,Search,GetSearchTerms) {
   var self = this;
 
   self.errors = false
 
+  GetSearchTerms.success(function(data) {
+    self.searchHistory = []
+    for (x = 0; x < 10; x++) {
+      if (data[x] != "") {
+        self.searchHistory.push(data[data.length-x])
+      }
+    };
+  }).error(function(data, status){
+    console.log(data, status);
+        self.searchHistory = [];
+  });
+
   this.runSearch = function() {
    Search.query(self.searchTerm)
     .then(function(response) {
-      console.log(response.data.data.children)
       self.image = ''
       self.subReddits = response.data.data.children
       self.errors = false
@@ -30,5 +41,17 @@ subredditor.controller('SubRedditController',['$http','Search',function($http,Se
         console.log("failed")
       console.log(data)
     });
+      //try and get autoupload
+      GetSearchTerms.success(function(data) {
+        self.searchHistory = []
+        for (x = 0; x < 10; x++) {
+          if (data[x] != "") {
+            self.searchHistory.push(data[data.length-x])
+          }
+        };
+      }).error(function(data, status){
+        console.log(data, status);
+            self.searchHistory = [];
+      });
    };
 }])

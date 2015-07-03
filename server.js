@@ -31,8 +31,6 @@ db.once('open', function (callback) {
 
   var searchHistory = mongoose.model('searchHistory', searchSchema)
 
-  var test = [{searchTerm: "Test"}]
-
   // searchHistory.collection.insert(test, onInsert)
   //this means it is stored as db.searchhistories.find
 

@@ -35,6 +35,6 @@ describe('SubRedditor', function() {
       searchButton.click();
       searchField.sendKeys('Ferrari')
       searchButton.click();
-      expect(element(by.id('searchTerms')).getText()).toContain('Bitcoin, Ferrari');
+      expect(element(by.id('searchTerms')).getText()).toContain('| Bitcoin | Ferrari |' );
    })
 });
