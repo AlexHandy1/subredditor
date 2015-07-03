@@ -28,5 +28,13 @@ describe('SubRedditor', function() {
       expect(element(by.id('error')).getText()).toContain('Sorry, there are no subreddits matching that search');
    })
 
-   //test that has a link that goes to external website
+   it('shows users a list of recently searched items', function() {
+      var searchButton = element(by.id('searchButton'))
+      var searchField = element(by.model('SRCtrl.searchTerm'))
+      searchField.sendKeys('Bitcoin');
+      searchButton.click();
+      searchField.sendKeys('Ferrari')
+      searchButton.click();
+      expect(element(by.id('searchTerms')).getText()).toContain('Bitcoin, Ferrari');
+   })
 });

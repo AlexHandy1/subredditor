@@ -1,4 +1,4 @@
-subredditor.controller('SubRedditController',['Search',function(Search) {
+subredditor.controller('SubRedditController',['$http','Search',function($http,Search) {
   var self = this;
 
   self.errors = false
@@ -10,10 +10,7 @@ subredditor.controller('SubRedditController',['Search',function(Search) {
       self.image = ''
       self.subReddits = response.data.data.children
       self.errors = false
-      console.log(self.errors)
-      console.log(self.subReddits.length)
         self.subReddits.forEach(function(subreddit) {
-        // console.log(subreddit.data.thumbnail);
         if (subreddit.data.thumbnail == "self" || subreddit.data.thumbnail == "default" || subreddit.data.thumbnail == "") {
           subreddit.image = 'img/reddit-logo.png'
         } else {
@@ -23,6 +20,15 @@ subredditor.controller('SubRedditController',['Search',function(Search) {
     },
     function(data) {
       self.errors = true
+    });
+    $http.post('/searchterms', {searchTerm: self.searchTerm}).
+      success(function(data, status, headers, config) {
+       console.log(data)
+       // not posting through anything but it is connected to database, so about passing the right data here
+      }).
+      error(function(data, status, headers, config) {
+        console.log("failed")
+      console.log(data)
     });
    };
 }])
