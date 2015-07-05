@@ -44,7 +44,19 @@ describe('SubRedditor', function() {
 
    });
 
-   it('enables users to filter the top 10 search results with a checkbox', function() {
+   xit('enables users to filter the top 10 search results with a checkbox', function() {
 
    });
+
+   xit('shows users a list of the most searched items', function() {
+
+       searchField.sendKeys('Bitcoin');
+      searchButton.click();
+      searchField.sendKeys('Ferrari')
+      searchButton.click();
+      searchField.sendKeys('Bitcoin')
+      searchButton.click();
+      expect(element(by.id('mostSearched')).getText()).toContain('| Bitcoin |' );
+
+   })
 });

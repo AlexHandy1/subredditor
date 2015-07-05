@@ -53,6 +53,9 @@
         </div>
         <div class='row'> <b>Latest Searches: </b>
           <span id='searchTerms' ng-repeat='searches in SRCtrl.searchHistory'> {{searches.searchTerm}} | </span>
+          <br>
+          <b>Popular Searches: |</b>
+           <span id='mostSearched' ng-repeat='searches in SRCtrl.searchTrends'> {{searches}} | </span>
         </div>
        <!--  <div class='row'>
           <input type="checkbox" ng-click="top10filter()"> Top 10 Results </input>
