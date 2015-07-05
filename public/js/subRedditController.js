@@ -15,6 +15,11 @@ subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms'
         self.searchHistory = [];
   });
 
+ // this.top10Filter = function (subreddit) {
+ //    console.log(this.subReddits)
+ //    return (this.subReddits.indexOf(subreddit) < 10);
+ //  }
+
   this.runSearch = function() {
    Search.query(self.searchTerm)
     .then(function(response) {
@@ -34,7 +39,6 @@ subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms'
     });
     $http.post('/searchterms', {searchTerm: self.searchTerm}).
       success(function(data, status, headers, config) {
-       console.log(data)
        // not posting through anything but it is connected to database, so about passing the right data here
       }).
       error(function(data, status, headers, config) {
