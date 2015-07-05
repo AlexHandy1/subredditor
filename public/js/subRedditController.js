@@ -15,11 +15,6 @@ subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms'
         self.searchHistory = [];
   });
 
- // this.top10Filter = function (subreddit) {
- //    console.log(this.subReddits)
- //    return (this.subReddits.indexOf(subreddit) < 10);
- //  }
-
   this.runSearch = function() {
    Search.query(self.searchTerm)
     .then(function(response) {
