@@ -11,6 +11,7 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="js/app.js"></script>
      <script src="js/subRedditSearch.js"></script>
+     <script src="js/getSearchTerms.js"></script>
     <script src="js/subRedditController.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
@@ -43,6 +44,9 @@
                 <input type="submit" class="btn" id='searchButton'></input>
               </form>
             </div>
+        </div>
+        <div class='row'> <b>Latest Searches: </b>
+          <span id='searchTerms' ng-repeat='searches in SRCtrl.searchHistory'> {{searches.searchTerm}} | </span>
         </div>
         <div class='row' id='error' ng-show='SRCtrl.errors'>
           <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
