@@ -1,15 +1,24 @@
 subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms', function($http,Search,GetSearchTerms) {
   var self = this;
 
+
   self.errors = false
 
   GetSearchTerms.success(function(data) {
     self.searchHistory = []
+    self.searchTrends = []
+    var counts = {}
     for (x = 0; x < 10; x++) {
       if (data[x] != "") {
         self.searchHistory.push(data[data.length-x])
       }
     };
+    data.forEach(function(x)
+      {counts[x.searchTerm] = (counts[x.searchTerm] || 0)+1
+    })
+    var sortedTerms = Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]})
+    self.searchTrends = sortedTerms.slice(0,5)
+    console.log(self.searchTrends)
   }).error(function(data, status){
     console.log(data, status);
         self.searchHistory = [];
