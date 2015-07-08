@@ -12,6 +12,7 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "mongodb" : "> 1.1.10",
     "mongoose": "3.x.x",
+    "body-parser": "> 1.1",
     "bower": "1.4.x"
   },
   "scripts": {
