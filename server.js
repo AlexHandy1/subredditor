@@ -6,7 +6,8 @@ var bodyParser = require('body-parser')
 
 //DATABASE SETUP
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/subreddit')
+var MONGODB_URI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/subreddit'
+mongoose.connect(MONGODB_URI)
 var db = mongoose.connection;
 
 // CONFIG FOR FILES AND PORT
