@@ -9,7 +9,7 @@ subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms'
     self.searchTrends = []
     var counts = {}
     for (x = 0; x < 5; x++) {
-      if (data[x] != "" && != "undefined") {
+      if (data[x] != "" && data[x] != "undefined") {
         //issue is duplicate undefined
         self.searchHistory.push(data[data.length-x])
         console.log(self.searchHistory)
