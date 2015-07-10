@@ -8,7 +8,7 @@ subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms'
     self.searchHistory = []
     self.searchTrends = []
     var counts = {}
-    for (x = 0; x < self.searchTrends.length; x++) {
+    for (x = 0; x < 5; x++) {
       if (data[x] != "") {
         self.searchHistory.push(data[data.length-x])
         console.log(self.searchHistory)
