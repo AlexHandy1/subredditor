@@ -3,6 +3,8 @@ describe('SubRedditor', function() {
    beforeEach(function(){
       browser.get('http://localhost:3000');
    });
+   var searchButton = element(by.id('searchButton'))
+   var searchField = element(by.model('SRCtrl.searchTerm'))
 
    //test that a table exists before search
 
@@ -11,8 +13,6 @@ describe('SubRedditor', function() {
    });
 
    it('has a fully populated table after a search is conducted', function() {
-      var searchButton = element(by.id('searchButton'))
-      var searchField = element(by.model('SRCtrl.searchTerm'))
       var table = element.all(by.repeater('subreddit in SRCtrl.cohort'));
       searchField.sendKeys('Bitcoin');
       searchButton.click();
@@ -20,13 +20,43 @@ describe('SubRedditor', function() {
    });
 
    it('displays an error message if there is no subreddit for that search', function() {
-      var searchButton = element(by.id('searchButton'))
-      var searchField = element(by.model('SRCtrl.searchTerm'))
-
       searchField.sendKeys('aa');
       searchButton.click();
       expect(element(by.id('error')).getText()).toContain('Sorry, there are no subreddits matching that search');
    })
 
-   //test that has a link that goes to external website
+   it('shows users a list of recently searched items', function() {
+      searchField.sendKeys('Bitcoin');
+      searchButton.click();
+      searchField.sendKeys('Ferrari')
+      searchButton.click();
+      expect(element(by.id('searchTerms')).getText()).toContain('| Bitcoin | Ferrari |' );
+   })
+
+   it('enables users to conduct a simple text search on results', function() {
+      var textSearchButton = element(by.id('textSearch'))
+      var textSearchField = element(by.model('SRCtrl.searchTerm'))
+      searchField.sendKeys('Bitcoin');
+      searchButton.click();
+      textSearchField.sendKeys('Bit');
+      textSearchButton.click();
+      //how test output if it is dynamic and you don't know what output might be
+
+   });
+
+   xit('enables users to filter the top 10 search results with a checkbox', function() {
+
+   });
+
+   xit('shows users a list of the most searched items', function() {
+
+       searchField.sendKeys('Bitcoin');
+      searchButton.click();
+      searchField.sendKeys('Ferrari')
+      searchButton.click();
+      searchField.sendKeys('Bitcoin')
+      searchButton.click();
+      expect(element(by.id('mostSearched')).getText()).toContain('| Bitcoin |' );
+
+   })
 });

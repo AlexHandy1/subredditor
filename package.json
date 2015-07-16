@@ -2,10 +2,23 @@
   "name": "subredditor",
   "version": "1.0.0",
   "description": "User Stories",
-  "main": "index.js",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.12.4",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.36",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "mongodb" : "> 1.1.10",
+    "mongoose": "3.x.x",
+    "body-parser": "> 1.1",
+    "bower": "1.4.x"
+  },
   "scripts": {
     "test": "karma start test/karma.conf.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -16,6 +29,11 @@
   "bugs": {
     "url": "https://github.com/AlexHandy1/subredditor/issues"
   },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
   "homepage": "https://github.com/AlexHandy1/subredditor#readme",
   "devDependencies": {
     "jasmine-core": "^2.3.4",

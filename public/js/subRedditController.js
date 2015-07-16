@@ -1,19 +1,35 @@
-subredditor.controller('SubRedditController',['Search',function(Search) {
+subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms', function($http,Search,GetSearchTerms) {
   var self = this;
 
+
   self.errors = false
+
+  GetSearchTerms.success(function(data) {
+    self.searchHistory = []
+    self.searchTrends = []
+    var counts = {}
+    for (x = 0; x < 5; x++) {
+      if (data[x] != "" && data[x] != "undefined") {
+        self.searchHistory.push(data[data.length-x])
+        console.log(self.searchHistory)
+      }
+    };
+    data.forEach(function(x)
+      {counts[x.searchTerm] = (counts[x.searchTerm] || 0)+1
+    })
+    var sortedTerms = Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]})
+    self.searchTrends = sortedTerms.slice(0,5)
+  }).error(function(data, status){
+        self.searchHistory = [];
+  });
 
   this.runSearch = function() {
    Search.query(self.searchTerm)
     .then(function(response) {
-      console.log(response.data.data.children)
       self.image = ''
       self.subReddits = response.data.data.children
       self.errors = false
-      console.log(self.errors)
-      console.log(self.subReddits.length)
         self.subReddits.forEach(function(subreddit) {
-        // console.log(subreddit.data.thumbnail);
         if (subreddit.data.thumbnail == "self" || subreddit.data.thumbnail == "default" || subreddit.data.thumbnail == "") {
           subreddit.image = 'img/reddit-logo.png'
         } else {
@@ -24,5 +40,23 @@ subredditor.controller('SubRedditController',['Search',function(Search) {
     function(data) {
       self.errors = true
     });
+    $http.post('/searchterms', {searchTerm: self.searchTerm}).
+      success(function(data, status, headers, config) {
+      }).
+      error(function(data, status, headers, config) {
+        console.log("failed")
+      console.log(data)
+    });
+      GetSearchTerms.success(function(data) {
+        self.searchHistory = []
+        for (x = 0; x < 10; x++) {
+          if (data[x] != "") {
+            self.searchHistory.push(data[data.length-x])
+          }
+        };
+      }).error(function(data, status){
+        console.log(data, status);
+            self.searchHistory = [];
+      });
    };
 }])
