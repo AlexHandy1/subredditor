@@ -1,12 +1,11 @@
 describe('SubRedditor', function() {
 
    beforeEach(function(){
+      // browser().navigateTo("http://localhost:3000/_test/clean_db");
       browser.get('http://localhost:3000');
    });
    var searchButton = element(by.id('searchButton'))
    var searchField = element(by.model('SRCtrl.searchTerm'))
-
-   //test that a table exists before search
 
    it('has a table loaded prior to search', function(){
       expect($('table').isPresent()).toBeTruthy();
@@ -25,12 +24,13 @@ describe('SubRedditor', function() {
       expect(element(by.id('error')).getText()).toContain('Sorry, there are no subreddits matching that search');
    })
 
-   it('shows users a list of recently searched items', function() {
+   xit('shows users a list of recently searched items', function() {
       searchField.sendKeys('Bitcoin');
       searchButton.click();
       searchField.sendKeys('Ferrari')
       searchButton.click();
-      expect(element(by.id('searchTerms')).getText()).toContain('| Bitcoin | Ferrari |' );
+      var searchTerms = element.all(by.repeater('searches in SRCtrl.searchHistory'))
+      expect(searchTerms.count()).toBe(2)
    })
 
    it('enables users to conduct a simple text search on results', function() {
@@ -40,17 +40,11 @@ describe('SubRedditor', function() {
       searchButton.click();
       textSearchField.sendKeys('Bit');
       textSearchButton.click();
-      //how test output if it is dynamic and you don't know what output might be
-
-   });
-
-   xit('enables users to filter the top 10 search results with a checkbox', function() {
-
    });
 
    xit('shows users a list of the most searched items', function() {
 
-       searchField.sendKeys('Bitcoin');
+      searchField.sendKeys('Bitcoin');
       searchButton.click();
       searchField.sendKeys('Ferrari')
       searchButton.click();
