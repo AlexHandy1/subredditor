@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var MONGODB_URI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/subreddit'
 mongoose.connect(MONGODB_URI)
 var db = mongoose.connection;
+var testRequests = require('test-requests');
 
 // CONFIG FOR FILES AND PORT
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -20,10 +21,17 @@ app.set('port', process.env.PORT || 3000);
 
 //DATABASE ACTIONS
 
-
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
   console.log("We are connected")
+
+  // //ATTEMPT TO CLEAR TEST DATABASE
+  // console.log(process.env)
+  // testRequests.registerHandlers({
+  //   clean_db: function(request, response, done) {
+  //     db.init(done);
+  //   }
+  // });
 
   var searchSchema = mongoose.Schema(
     {

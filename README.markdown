@@ -71,6 +71,6 @@ Further Improvements
 
 *  Dynamic search e.g. user can directly click on a popular search term and to get results
 
-*  Improved test coverage e.g. address asychronicity issue
+*  Improved test coverage and adopt best practice for cleaning test database e.g. address asychronicity issue
 
 *  Add more filters and search options for search results e.g. sorting by amount of comments, upvotes etc

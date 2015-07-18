@@ -49,14 +49,16 @@ subredditor.controller('SubRedditController',['$http','Search', 'GetSearchTerms'
     });
       GetSearchTerms.success(function(data) {
         self.searchHistory = []
-        for (x = 0; x < 10; x++) {
+        for (x = 0; x < 6; x++) {
           if (data[x] != "") {
             self.searchHistory.push(data[data.length-x])
           }
-        };
+        }
       }).error(function(data, status){
         console.log(data, status);
             self.searchHistory = [];
+      }).finally(function() {
+          self.searchTerm = "";
       });
    };
 }])
