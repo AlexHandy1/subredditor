@@ -25,7 +25,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
   console.log("We are connected")
 
-  // //ATTEMPT TO CLEAR TEST DATABASE
+  // CLEAR TEST DATABASE
   // console.log(process.env)
   // testRequests.registerHandlers({
   //   clean_db: function(request, response, done) {
