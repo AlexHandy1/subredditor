@@ -5,10 +5,6 @@ Summary
 
 * Supported by a full JS back-end with a Node Express Server and MongoDB database that stores user search terms and allows the latest and most popular to be displayed on the front-end.
 
-* I followed Agile and TDD methodologies - created user stories to develop my MVP and created a waffle.io board to manage tickets >> [Waffle](https://waffle.io/AlexHandy1/subredditor).
-
-* To view simply click on the heroku link [SubRedditor Web](https://subredditor.herokuapp.com/). Detailed instructions for local installation below.
-
 * Challenges and proposed improvements - I would like to make the search more dynamic based on data collected from users e.g. can directly click on a popular search term and get to results
 
 ![SubRedditor - Example Search](https://github.com/AlexHandy1/subredditor/blob/master/public/img/SubRedditor.png)
@@ -41,23 +37,6 @@ Use Cases:
       So that I can search through the most recent subreddit articles,
       I want to be able to conduct a simple text search from the results list
 
-```
-
-How to run
-----
-
-### Local Installation
-
-After you have downloaded or locally installed Node.js and MongoDB (set-up a database called subreddit, if using 'mongo' interface in command line you can just run 'use subreddit') to view in local web browser (localhost 3000) and run tests follow the below commands in the command-line
-
-```
-git clone https://github.com/AlexHandy1/subredditor
-cd subredditor
-npm install
-mongod
-npm start
-webdriver-manager start (in new command-line tab)
-protractor test/e2e/conf.js (in new command-line tab)
 ```
 
 Technologies used
